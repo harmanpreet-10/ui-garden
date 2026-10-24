@@ -185,10 +185,10 @@ docker build -t ui-garden .
 Run the Docker container:
 
 ```bash
-docker run --rm -p 8080:80 ui-garden
+docker run --rm -p 8083:80 ui-garden
 ```
 
-Open http://localhost:8080 in your browser.
+Open http://localhost:8083 in your browser.
 
 The Docker application displays the UI Garden heading and four Button examples.
 
@@ -199,3 +199,27 @@ To stop the running container, press Ctrl + C in the terminal.
 UI Garden demonstrates the development of a reusable React component library using TypeScript, styled-components, and Storybook.
 
 The project includes component documentation, responsive styling, automated tests, a production build, and Docker deployment.
+
+
+## Assignment 12 — Required deployment
+
+The production site must be accessible at **http://localhost:8083**.
+
+```powershell
+npm install --legacy-peer-deps
+npm run storybook
+npm test -- --watchAll=false
+npm run build
+docker build -t ui-garden .
+docker run -d --name Kaur_Harmanpreet_coding_assignment12 -p 8083:80 ui-garden
+docker ps
+docker exec Kaur_Harmanpreet_coding_assignment12 pwd
+```
+
+The Docker working directory must print `/Kaur_Harmanpreet_ui_garden`.
+
+The component library includes Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter, Dropdown, RadioButton, Img, HeroImage and Card. Each component includes a TypeScript component, types, Storybook stories with editable controls and Default/Disabled states, tests for visibility and disabled background styling, and an index export.
+
+The disabled state of non-interactive HTML elements uses `aria-disabled` and CSS to visibly grey out and suppress pointer interactions. Native controls use their `disabled` attribute.
+
+Verify the Docker site by visiting http://localhost:8083. Storybook is available at http://localhost:6006 while `npm run storybook` is running.

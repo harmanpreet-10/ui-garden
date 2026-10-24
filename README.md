@@ -1,46 +1,201 @@
-# Getting Started with Create React App
+# UI Garden — React Component Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
 
-## Available Scripts
+UI Garden is a reusable React component library created using React, TypeScript, Storybook, and styled-components.
 
-In the project directory, you can run:
+The project demonstrates how to develop reusable user interface components, document them using Storybook, test their functionality, and deploy a React application using Docker.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React
+- TypeScript
+- Storybook
+- styled-components
+- Jest
+- React Testing Library
+- Docker
+- Nginx
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
 
-### `npm test`
+The UI Garden project includes a reusable Button component with the following features:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Custom button text
+- Custom background colors
+- Disabled button functionality
+- Responsive styling for mobile screens
+- Keyboard focus styling
+- Interactive Storybook documentation
+- Automated component tests
 
-### `npm run build`
+## Project Folder Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```text
+ui-garden/
+├── .storybook/
+│   ├── main.ts
+│   └── preview.tsx
+├── public/
+├── src/
+│   ├── components/
+│   │   └── Button/
+│   │       ├── Button.tsx
+│   │       ├── Button.types.tsx
+│   │       ├── Button.stories.tsx
+│   │       ├── Button.test.tsx
+│   │       └── index.ts
+│   ├── App.tsx
+│   ├── App.css
+│   └── App.test.tsx
+├── .dockerignore
+├── Dockerfile
+├── package.json
+├── package-lock.json
+├── README.md
+└── tsconfig.json
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Open a terminal in the UI Garden project folder and install the required dependencies:
 
-### `npm run eject`
+```bash
+npm install --legacy-peer-deps
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Run the React Application
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Open http://localhost:3000 in your browser.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The React application displays the UI Garden heading and four Button examples.
 
-## Learn More
+## Run Storybook
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run storybook
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Open http://localhost:6006 in your browser.
+
+Storybook includes four Button stories:
+
+1. Default Button — Blue
+2. Disabled Button — Grey
+3. Green Button — Green
+4. Red Button — Red
+
+Storybook also provides interactive controls and automatically generated component documentation.
+
+## Button Component Usage
+
+Import the reusable Button component:
+
+```tsx
+import { Button } from './components/Button/Button';
+```
+
+Example:
+
+```tsx
+<Button text="Default Button" />
+
+<Button
+  text="Green Button"
+  backgroundColor="#28a745"
+/>
+
+<Button
+  text="Red Button"
+  backgroundColor="#dc3545"
+/>
+
+<Button
+  text="Disabled Button"
+  disabled
+/>
+```
+
+## Styling and Responsive Design
+
+The Button component uses the styled-components library for styling.
+
+The component supports customizable colors, hover effects, keyboard focus styles, and a disabled state.
+
+Media queries are used to improve the layout on smaller screens.
+
+## Automated Testing
+
+The project uses Jest and React Testing Library to test the application and Button component.
+
+Run the tests:
+
+```bash
+npm test -- --watchAll=false
+```
+
+The automated tests check component rendering, disabled functionality, and custom background colors.
+
+Latest verified result:
+
+- Test suites: 2 passed
+- Tests: 4 passed
+- Failed tests: 0
+
+## TypeScript Validation
+
+Run:
+
+```bash
+npx tsc --noEmit --pretty false
+```
+
+This checks TypeScript code without generating additional files.
+
+## Production Build
+
+Run:
+
+```bash
+npm run build
+```
+
+This creates an optimized production version of the application inside the `build` folder.
+
+The production build has been verified to compile successfully.
+
+## Docker Setup
+
+Docker is used to containerize and serve the React application.
+
+The Dockerfile uses a Node.js build stage and Nginx to serve the generated production files.
+
+Make sure Docker Desktop is running.
+
+Build the Docker image:
+
+```bash
+docker build -t ui-garden .
+```
+
+Run the Docker container:
+
+```bash
+docker run --rm -p 8080:80 ui-garden
+```
+
+Open http://localhost:8080 in your browser.
+
+The Docker application displays the UI Garden heading and four Button examples.
+
+To stop the running container, press Ctrl + C in the terminal.
+
+## Conclusion
+
+UI Garden demonstrates the development of a reusable React component library using TypeScript, styled-components, and Storybook.
+
+The project includes component documentation, responsive styling, automated tests, a production build, and Docker deployment.

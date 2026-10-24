@@ -1,9 +1,20 @@
-import React from 'react';
+
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders UI Garden heading and buttons', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  expect(
+    screen.getByRole('heading', { name: 'UI Garden' })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole('button', { name: 'Default Button' })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole('button', { name: 'Disabled Button' })
+  ).toBeDisabled();
 });

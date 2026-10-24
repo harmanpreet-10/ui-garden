@@ -33,3 +33,8 @@
     align-items: stretch;
   }
 }
+
+.garden-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 18px; align-items: center; width: min(100%, 1000px); margin: 20px auto; text-align: left; }
+.garden-gallery table { border-collapse: collapse; width: 100%; }
+.garden-gallery img { max-width: 100%; }
+@media (max-width: 600px) { .garden-gallery { grid-template-columns: 1fr; padding: 0 12px; box-sizing: border-box; } }
